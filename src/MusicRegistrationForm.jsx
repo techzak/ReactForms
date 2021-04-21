@@ -1,6 +1,7 @@
 import _ from "lodash";
 import React from "react";
 
+// This is Music Registration
 class MusicRegistrationForm extends React.Component {
   constructor(props) {
     super(props);
@@ -226,7 +227,8 @@ class MusicRegistrationForm extends React.Component {
           </div>
           <br />
           <button type="submit">Submit</button>
-          <button type="button" onClick={
+          <button type="button" onClick=
+          {
               this.onClear
           }>Clear</button>
         </form>
