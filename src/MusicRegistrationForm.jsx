@@ -26,23 +26,23 @@ class MusicRegistrationForm extends React.Component {
     console.log("Button");
     alert(JSON.stringify(this.state));
   };
- 
+
   onClear = () => {
-      this.setState({
-        name: "",
-        comment: "",
-        instrument: "",
-        days: {
-          Monday: false,
-          Tuesday: false,
-          Wednesday: false,
-          Thursday: false,
-          Friday: false,
-          Saturday: false,
-          Sunday: false,
-        },
-      })
-  }
+    this.setState({
+      name: "",
+      comment: "",
+      instrument: "",
+      days: {
+        Monday: false,
+        Tuesday: false,
+        Wednesday: false,
+        Thursday: false,
+        Friday: false,
+        Saturday: false,
+        Sunday: false,
+      },
+    });
+  };
 
   ConstructMonths = () => {
     let months = [
@@ -75,9 +75,10 @@ class MusicRegistrationForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.HandleOnClick}>
-          <h2>Music School Registration</h2>
-          <p>Register to our music school from below</p>
+          <h1>Music School Registration</h1>
+          <h3>Register to our music school from below</h3>
           <hr></hr>
+          <br />
           <div>
             <label>Name </label>
             <input
@@ -90,20 +91,22 @@ class MusicRegistrationForm extends React.Component {
           <div>
             <label>Birth Date </label>
             <select>
-            {_.times(31, n => {
-                  return (
-                      <option value={1 + n} key={n}>{1+ n}</option>
-                  )
+              {_.times(31, (n) => {
+                return (
+                  <option value={1 + n} key={n}>
+                    {1 + n}
+                  </option>
+                );
               })}
-                </select>
-            <select>
-              {this.ConstructMonths()}
             </select>
+            <select>{this.ConstructMonths()}</select>
             <select>
-              {_.times(20, n => {
-                  return (
-                      <option value={2000 + n} key={n}>{2000 + n}</option>
-                  )
+              {_.times(20, (n) => {
+                return (
+                  <option value={2000 + n} key={n}>
+                    {2000 + n}
+                  </option>
+                );
               })}
             </select>
           </div>
@@ -227,10 +230,10 @@ class MusicRegistrationForm extends React.Component {
           </div>
           <br />
           <button type="submit">Submit</button>
-          <button type="button" onClick=
-          {
-              this.onClear
-          }>Clear</button>
+          &nbsp;&nbsp;&nbsp;
+          <button type="button" onClick={this.onClear}>
+            Clear
+          </button>
         </form>
       </div>
     );
