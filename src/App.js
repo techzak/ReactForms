@@ -1,5 +1,6 @@
 import MusicRegistrationForm from "./MusicRegistrationForm";
 import SchoolRegistrationForm from "./SchoolRegistrationForm";
+import LandscapingOnlineEnquiry from "./LandscapingOnlineEnquiry";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,11 @@ function App() {
             <li>
               <Link to="/SchoolRegistrationForm">School Registration Form</Link>
             </li>
+            <li>
+              <Link to="/LandscapingOnlineEnquiry">
+                Landscaping Online Enquiry
+              </Link>
+            </li>
           </ul>
           <hr />
           <Route
@@ -26,6 +32,10 @@ function App() {
           <Route
             path="/SchoolRegistrationForm"
             component={SchoolRegistrationForm}
+          />
+          <Route
+            path="/LandscapingOnlineEnquiry"
+            component={LandscapingOnlineEnquiry}
           />
         </div>
       </Router>
