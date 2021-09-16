@@ -2,6 +2,8 @@ import MusicRegistrationForm from "./MusicRegistrationForm";
 import SchoolRegistrationForm from "./SchoolRegistrationForm";
 import LandscapingOnlineEnquiry from "./LandscapingOnlineEnquiry";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Success from './Success';
+import ReviewAndSubmit from './ReviewAndSubmit';
 
 function App() {
   return (
@@ -36,6 +38,14 @@ function App() {
           <Route
             path="/LandscapingOnlineEnquiry"
             component={LandscapingOnlineEnquiry}
+          />
+          <Route
+            path="/Success"
+            component={Success}
+          />
+          <Route
+            path="/ReviewAndSubmit"
+            component={ReviewAndSubmit}
           />
         </div>
       </Router>

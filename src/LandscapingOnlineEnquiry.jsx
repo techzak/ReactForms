@@ -1,86 +1,72 @@
 import React from "react";
+import Radio from "./Components/radio";
 
 class LandscapingOnlineEnquiry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       areas: "",
+      size: "",
+      design: "",
+      currentStatus: "",
+      startProject: "",
+      budget: "",
     };
   }
 
-  handleOnSubmit = () => {
-    this.props.history.push("/");
+  handleOnNext = () => {
+    this.props.history.push("/ReviewAndSubmit", { ...this.state });
   };
 
   render() {
-    console.log("This is a message", this.props);
     return (
       <div>
-        <form onSubmit={this.handleOnSubmit}>
+        <form>
           <h3>
             <label>Which areas need landscape construction?</label>
           </h3>
           <br />
-          <input
-            type="radio"
-            id="frontyard"
-            name="areas"
-            value="frontyard"
-            checked={this.state.areas}
-            onChange={(event) => this.setState({ areas: event.target.checked })}
+          <Radio
+            value="Frontyard"
+            label="Frontyard"
+            checked={this.state.areas === "Frontyard"}
+            onChange={(event) => this.setState({ areas: event.target.value })}
           />
-          <label>Front Yard</label>
           <br />
-          <input
-            type="radio"
-            id="backyard"
-            name="areas"
-            value="backyard"
-            checked={this.state.areas}
-            onChange={(event) => this.setState({ areas: event.target.checked })}
+          <Radio
+            value="Backyard"
+            label="Backyard"
+            checked={this.state.areas === "Backyard"}
+            onChange={(event) => this.setState({ areas: event.target.value })}
           />
-          <label>Back yard</label>
           <br />
-          <input
-            type="radio"
-            id="sideyard"
-            name="areas"
+          <Radio
+            label="Side Yard"
             value="sideyard"
-            checked={this.state.areas}
-            onChange={(event) => this.setState({ areas: event.target.checked })}
+            checked={this.state.areas === "sideyard"}
+            onChange={(event) => this.setState({ areas: event.target.value })}
           />
-          <label>Side Yard</label>
           <br />
-          <input
-            type="radio"
-            id="hillside"
-            name="areas"
+          <Radio
+            label="Hillside/Sloped Yard"
             value="hillside"
-            checked={this.state.areas}
-            onChange={(event) => this.setState({ areas: event.target.checked })}
+            checked={this.state.areas === "hillside"}
+            onChange={(event) => this.setState({ areas: event.target.value })}
           />
-          <label>Hillside/Sloped Yard</label>
           <br />
-          <input
-            type="radio"
-            id="entireproperty"
-            name="areas"
+          <Radio
+            label="Entire Property"
             value="entireproperty"
-            checked={this.state.areas}
-            onChange={(event) => this.setState({ areas: event.target.checked })}
+            checked={this.state.areas === "entireproperty"}
+            onChange={(event) => this.setState({ areas: event.target.value })}
           />
-          <label>Entire Property</label>
           <br />
-          <input
-            type="radio"
-            id="other"
-            name="areas"
+          <Radio
+            label="Other"
             value="other"
-            checked={this.state.areas}
-            onChange={(event) => this.setState({ areas: event.target.checked })}
+            checked={this.state.areas === "other"}
+            onChange={(event) => this.setState({ areas: event.target.value })}
           />
-          <label>Other</label>
-          <br />
           <br />
           <h3>
             <label>Size of Land</label>
@@ -90,8 +76,8 @@ class LandscapingOnlineEnquiry extends React.Component {
             id="Acerage"
             name="size"
             value="Acerage"
-            checked={this.state.size}
-            onChange={(event) => this.setState({ size: event.target.checked })}
+            checked={this.state.size === "Acerage"}
+            onChange={(event) => this.setState({ size: event.target.value })}
           />
           <label>Acerage</label>
           <br />
@@ -100,8 +86,8 @@ class LandscapingOnlineEnquiry extends React.Component {
             id="smallblock"
             name="size"
             value="smallblock"
-            checked={this.state.size}
-            onChange={(event) => this.setState({ size: event.target.checked })}
+            checked={this.state.size === "smallblock"}
+            onChange={(event) => this.setState({ size: event.target.value })}
           />
           <label>Small Block</label>
           <br />
@@ -110,8 +96,8 @@ class LandscapingOnlineEnquiry extends React.Component {
             id="largeblock"
             name="size"
             value="largeblock"
-            checked={this.state.size}
-            onChange={(event) => this.setState({ size: event.target.checked })}
+            checked={this.state.size === "largeblock"}
+            onChange={(event) => this.setState({ size: event.target.value })}
           />
           <label>Large Block</label>
           <br />
@@ -120,8 +106,8 @@ class LandscapingOnlineEnquiry extends React.Component {
             id="townhouse/unit"
             name="size"
             value="townhouse/unit"
-            checked={this.state.size}
-            onChange={(event) => this.setState({ size: event.target.checked })}
+            checked={this.state.size === "townhouse/unit"}
+            onChange={(event) => this.setState({ size: event.target.value })}
           />
           <label>Townhouse/Unit</label>
           <h3>
@@ -132,10 +118,8 @@ class LandscapingOnlineEnquiry extends React.Component {
             id="Yes"
             name="design"
             value="Yes"
-            checked={this.state.design}
-            onChange={(event) =>
-              this.setState({ design: event.target.checked })
-            }
+            checked={this.state.design === "Yes"}
+            onChange={(event) => this.setState({ design: event.target.value })}
           />
           <label>Yes, I have a design</label>
           <br />
@@ -144,10 +128,8 @@ class LandscapingOnlineEnquiry extends React.Component {
             id="No"
             name="design"
             value="No"
-            checked={this.state.design}
-            onChange={(event) =>
-              this.setState({ design: event.target.checked })
-            }
+            checked={this.state.design === "No"}
+            onChange={(event) => this.setState({ design: event.target.value })}
           />
           <label>No, I need help with the design</label>
           <h3>
@@ -157,9 +139,10 @@ class LandscapingOnlineEnquiry extends React.Component {
             type="radio"
             id="PlanningBudgeting"
             name="currentStatus"
-            checked={this.state.currentStatus}
+            value="PlanningBudgeting"
+            checked={this.state.currentStatus === "PlanningBudgeting"}
             onChange={(event) =>
-              this.setState({ currentStatus: event.target.checked })
+              this.setState({ currentStatus: event.target.value })
             }
           />
           <label>Planning and budgeting</label>
@@ -168,9 +151,10 @@ class LandscapingOnlineEnquiry extends React.Component {
             type="radio"
             id="readytorock"
             name="currentStatus"
-            checked={this.state.currentStatus}
+            value="readytorock"
+            checked={this.state.currentStatus === "readytorock"}
             onChange={(event) =>
-              this.setState({ currentStatus: event.target.checked })
+              this.setState({ currentStatus: event.target.value })
             }
           />
           <label>Ready to rock and roll</label>
@@ -179,12 +163,13 @@ class LandscapingOnlineEnquiry extends React.Component {
             type="radio"
             id="projectalreadyinprogress"
             name="currentStatus"
-            checked={this.state.currentStatus}
+            value="projectalreadyinprogress"
+            checked={this.state.currentStatus === "projectalreadyinprogress"}
             onChange={(event) =>
-              this.setState({ currentStatus: event.target.checked })
+              this.setState({ currentStatus: event.target.value })
             }
           />
-          <label>Projecy already in progress</label>
+          <label>Project already in progress</label>
           <br />
           <h3>
             <label>When do you need to start your project?</label>
@@ -202,11 +187,12 @@ class LandscapingOnlineEnquiry extends React.Component {
           <br />
           <input
             type="radio"
-            id="withinmonth"
+            id="within1month"
             name="startProject"
-            checked={this.state.startProject}
+            value="within 1 month"
+            checked={this.state.startProject === "within1month"}
             onChange={(event) =>
-              this.setState({ startProject: event.target.checked })
+              this.setState({ startProject: event.target.value })
             }
           />
           <label>Within the month</label>
@@ -215,9 +201,10 @@ class LandscapingOnlineEnquiry extends React.Component {
             type="radio"
             id="within6months"
             name="startProject"
-            checked={this.state.startProject}
+            value="within6months"
+            checked={this.state.startProject === "within6months"}
             onChange={(event) =>
-              this.setState({ startProject: event.target.checked })
+              this.setState({ startProject: event.target.value })
             }
           />
           <label>Within the next 6 months</label>
@@ -226,9 +213,10 @@ class LandscapingOnlineEnquiry extends React.Component {
             type="radio"
             id="withintheyear"
             name="startProject"
-            checked={this.state.startProject}
+            value="withintheyear"
+            checked={this.state.startProject === "withintheyear"}
             onChange={(event) =>
-              this.setState({ startProject: event.target.checked })
+              this.setState({ startProject: event.target.value })
             }
           />
           <label>Within the year</label>
@@ -236,8 +224,40 @@ class LandscapingOnlineEnquiry extends React.Component {
           <h3>
             <label>Budget</label>
           </h3>
+          <input
+            type="radio"
+            id="15to25K"
+            name="budget"
+            value="15 to 25 K"
+            checked={this.state.budget === "15 to 25 K"}
+            onChange={(event) => this.setState({ budget: event.target.value })}
+          />
+          <label>15k to 25k</label>
           <br />
-          <button type="submit">Submit</button>
+          <input
+            type="radio"
+            id="25to30K"
+            name="budget"
+            value="25 to 30 K"
+            checked={this.state.budget === "25 to 30 K"}
+            onChange={(event) => this.setState({ budget: event.target.value })}
+          />
+          <label>25k to 30k</label>
+          <br />
+          <input
+            type="radio"
+            id="30 to 40k"
+            name="budget"
+            value="30 to 40k"
+            checked={this.state.budget === "30 to 40k"}
+            onChange={(event) => this.setState({ budget: event.target.value })}
+          />
+          <label>30K to 40K</label>
+          <br />
+          <br />
+          <button type="button" onClick={this.handleOnNext}>
+            Next
+          </button>
         </form>
       </div>
     );
