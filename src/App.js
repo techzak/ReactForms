@@ -1,9 +1,10 @@
 import MusicRegistrationForm from "./MusicRegistrationForm";
 import SchoolRegistrationForm from "./SchoolRegistrationForm";
 import LandscapingOnlineEnquiry from "./LandscapingOnlineEnquiry";
+import BookingEnquiryForm from "./BookingEnquiryForm";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Success from './Success';
-import ReviewAndSubmit from './ReviewAndSubmit';
+import Success from "./Success";
+import ReviewAndSubmit from "./ReviewAndSubmit";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
                 Landscaping Online Enquiry
               </Link>
             </li>
+            <li>
+              <Link to="/BookingEnquiryForm">Booking Enquiry Form</Link>
+            </li>
           </ul>
           <hr />
           <Route
@@ -35,18 +39,13 @@ function App() {
             path="/SchoolRegistrationForm"
             component={SchoolRegistrationForm}
           />
+          <Route path="/BookingEnquiryForm" component={BookingEnquiryForm} />
           <Route
             path="/LandscapingOnlineEnquiry"
             component={LandscapingOnlineEnquiry}
           />
-          <Route
-            path="/Success"
-            component={Success}
-          />
-          <Route
-            path="/ReviewAndSubmit"
-            component={ReviewAndSubmit}
-          />
+          <Route path="/Success" component={Success} />
+          <Route path="/ReviewAndSubmit" component={ReviewAndSubmit} />
         </div>
       </Router>
     </div>

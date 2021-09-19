@@ -1,0 +1,11 @@
+.selectElement {
+  margin: 10px;
+}
+
+.divWithChildMargin > select {
+  margin: 10px;
+}
+
+.labelElement {
+  margin-right: 15px;
+}
