@@ -5,11 +5,13 @@ import BookingEnquiryForm from "./BookingEnquiryForm";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Success from "./Success";
 import ReviewAndSubmit from "./ReviewAndSubmit";
+import Counter from "./Components/counter";
+import Users from "./Users";
 
 function App() {
   return (
     <div>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div>
           <ul>
             <li>
@@ -29,6 +31,12 @@ function App() {
             <li>
               <Link to="/BookingEnquiryForm">Booking Enquiry Form</Link>
             </li>
+            <li>
+              <Link to="/Counter">Counter</Link>
+            </li>
+            <li>
+              <Link to="/Users">Users</Link>
+            </li>
           </ul>
           <hr />
           <Route
@@ -44,8 +52,10 @@ function App() {
             path="/LandscapingOnlineEnquiry"
             component={LandscapingOnlineEnquiry}
           />
+          <Route path="/Counter" component={Counter} />
           <Route path="/Success" component={Success} />
           <Route path="/ReviewAndSubmit" component={ReviewAndSubmit} />
+          <Route path="/Users" component={Users} />
         </div>
       </Router>
     </div>
