@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 class Users extends React.Component {
   constructor(props) {
@@ -24,41 +25,13 @@ class Users extends React.Component {
         console.log(error);
       });
   }
-
-  HandleOnClick = (event) => {
+  handleOnClick = (event) => {
     console.log(event.target.id);
-    axios
-      .get(
-        `https://jsonplaceholder.typicode.com/posts?userId=${event.target.id}`
-      )
-      .then((response) => {
-        // handle success
-        console.log(response.data);
-        this.setState({ posts: response.data });
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-  };
-  HandleOnPost = (event) => {
-    console.log(event.target.id);
-    axios
-      .get(
-        `https://jsonplaceholder.typicode.com/comments?postId=${event.target.id}`
-      )
-      .then((response) => {
-        // handle success
-        console.log(response.data);
-        this.setState({ comments: response.data });
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
+    console.log(this.props);
+    this.props.history.push(`/Users/${event.target.id}/posts`);
   };
   render() {
-    const { users, posts, comments } = this.state;
+    const { users } = this.state;
     return (
       <div>
         <h3>Users</h3>
@@ -68,31 +41,9 @@ class Users extends React.Component {
               <li
                 id={element.id}
                 value={element.name}
-                onClick={this.HandleOnClick}
+                onClick={this.handleOnClick}
               >
                 {element.name}
-              </li>
-            );
-          })}
-        </ul>
-        <hr />
-        <h3>User Posts</h3>
-        <ul>
-          {posts.map((element) => {
-            return (
-              <li id={element.id} onClick={this.HandleOnPost}>
-                {element.title}
-              </li>
-            );
-          })}
-        </ul>
-        <hr />
-        <h3>Post Comments</h3>
-        <ul>
-          {comments.map((element) => {
-            return (
-              <li id={element.id} onClick={this.HandleOnPost}>
-                {element.body}
               </li>
             );
           })}
@@ -102,4 +53,4 @@ class Users extends React.Component {
   }
 }
 
-export default Users;
+export default withRouter(Users);
