@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/style.css"],"names":[],"mappings":"AAIA,0CACE,WACF,CAEA,cACE,iBACF","file":"main.1ec113d8.chunk.css","sourcesContent":[".selectElement {\r\n  margin: 10px;\r\n}\r\n\r\n.divWithChildMargin > select {\r\n  margin: 10px;\r\n}\r\n\r\n.labelElement {\r\n  margin-right: 15px;\r\n}\r\n"]}
