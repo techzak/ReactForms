@@ -37,6 +37,7 @@ class Counter extends React.Component {
     const { count } = this.state;
     return (
       <div>
+        <h1>Counter</h1>
         <label>Current count:{count}</label>
         <hr />
         <button onClick={() => this.setState({ count: count + 1 })}>+</button>

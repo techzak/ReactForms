@@ -52,6 +52,7 @@ class BookingEnquiryForm extends React.Component {
   render() {
     return (
       <div>
+        <h1>Booking Enquiry Form</h1>
         <FieldLabelText
           label="First Name"
           value={this.state.firstName}
