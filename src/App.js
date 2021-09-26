@@ -2,17 +2,15 @@ import MusicRegistrationForm from "./MusicRegistrationForm";
 import SchoolRegistrationForm from "./SchoolRegistrationForm";
 import LandscapingOnlineEnquiry from "./LandscapingOnlineEnquiry";
 import BookingEnquiryForm from "./BookingEnquiryForm";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Success from "./Success";
 import ReviewAndSubmit from "./ReviewAndSubmit";
 import Counter from "./Components/counter";
 import Users from "./Users";
-import UsersPosts from "./UserPosts";
-import UsersPostsComments from "./UserPostsComments";
 
 function App() {
   return (
-    <div>
+    <div className="fullHeight">
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="flex-container">
           <div className="flex-item">
@@ -45,32 +43,28 @@ function App() {
             </ul>
           </div>
           <div className="flex-item">
-            <Route
-              path="/MusicRegistrationForm"
-              component={MusicRegistrationForm}
-            />
-            <Route
-              path="/SchoolRegistrationForm"
-              component={SchoolRegistrationForm}
-            />
-            <Route path="/BookingEnquiryForm" component={BookingEnquiryForm} />
-            <Route
-              path="/LandscapingOnlineEnquiry"
-              component={LandscapingOnlineEnquiry}
-            />
-            <Route path="/Counter" component={Counter} />
-            <Route path="/Success" component={Success} />
-            <Route path="/ReviewAndSubmit" component={ReviewAndSubmit} />
-            <Route path="/Users" component={Users} />
-            <Route
-              path="/Users/:userId/posts"
-              exact={true}
-              component={UsersPosts}
-            />
-            <Route
-              path="/Users/:userId/posts/:postId/comments"
-              component={UsersPostsComments}
-            />
+            <Switch>
+              <Route
+                path="/MusicRegistrationForm"
+                component={MusicRegistrationForm}
+              />
+              <Route
+                path="/SchoolRegistrationForm"
+                component={SchoolRegistrationForm}
+              />
+              <Route
+                path="/BookingEnquiryForm"
+                component={BookingEnquiryForm}
+              />
+              <Route
+                path="/LandscapingOnlineEnquiry"
+                component={LandscapingOnlineEnquiry}
+              />
+              <Route path="/Counter" component={Counter} />
+              <Route path="/Success" component={Success} />
+              <Route path="/ReviewAndSubmit" component={ReviewAndSubmit} />
+              <Route path="/Users" component={Users} />
+            </Switch>
           </div>
         </div>
       </BrowserRouter>

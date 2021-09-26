@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouteMatch, useHistory } from "react-router-dom";
+import { useRouteMatch, useHistory, Route } from "react-router-dom";
+import UsersPostsComments from "./UserPostsComments";
 
 function UsersPosts() {
   const [posts, setposts] = useState([]);
@@ -39,6 +40,11 @@ function UsersPosts() {
           );
         })}
       </ul>
+      <Route
+        path="/Users/:userId/posts/:postId/comments"
+        exact={true}
+        component={UsersPostsComments}
+      />
     </div>
   );
 }

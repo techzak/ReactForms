@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
+import UsersPosts from "./UserPosts";
 
 class Users extends React.Component {
   constructor(props) {
@@ -48,6 +49,11 @@ class Users extends React.Component {
             );
           })}
         </ul>
+        <Route
+          path="/Users/:userId/posts"
+          exact={true}
+          component={UsersPosts}
+        />
       </div>
     );
   }
