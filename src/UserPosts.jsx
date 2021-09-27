@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouteMatch, useHistory, Route } from "react-router-dom";
+import { useRouteMatch, Route, Link } from "react-router-dom";
 import UsersPostsComments from "./UserPostsComments";
 
-function UsersPosts() {
+function UsersPosts(props) {
   const [posts, setposts] = useState([]);
   const {
     params: { userId },
   } = useRouteMatch();
   console.log(userId);
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     axios
@@ -24,25 +24,28 @@ function UsersPosts() {
         console.log(error);
       });
   }, [userId]);
-  const handleOnClick = (event) => {
-    console.log(event.target.id);
-    history.push(`/Users/${userId}/posts/${event.target.id}/comments`);
-  };
+  // const handleOnClick = (event) => {
+  //   console.log(event.target.id);
+  //   history.push(`/Users/${userId}/posts/${event.target.id}/comments`);
+  // };
+  console.log(props.match);
   return (
     <div>
       <h3>User Posts</h3>
       <ul>
         {posts.map((element) => {
           return (
-            <li id={element.id} onClick={handleOnClick}>
-              {element.title}
+            <li id={element.id}>
+              <Link to={`/Users/${userId}/posts/${element.id}/comments`}>
+                {element.title}
+              </Link>
             </li>
           );
         })}
       </ul>
       <Route
-        path="/Users/:userId/posts/:postId/comments"
-        exact={true}
+        path={`${props.match.url}/:postId/comments`}
+        // exact={true}
         component={UsersPostsComments}
       />
     </div>
