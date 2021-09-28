@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouteMatch, Route, Link } from "react-router-dom";
+import { useRouteMatch, Route, Link, Switch } from "react-router-dom";
 import UsersPostsComments from "./UserPostsComments";
 
 function UsersPosts(props) {
@@ -31,23 +31,27 @@ function UsersPosts(props) {
   console.log(props.match);
   return (
     <div>
-      <h3>User Posts</h3>
-      <ul>
-        {posts.map((element) => {
-          return (
-            <li id={element.id}>
-              <Link to={`/Users/${userId}/posts/${element.id}/comments`}>
-                {element.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-      <Route
-        path={`${props.match.url}/:postId/comments`}
-        // exact={true}
-        component={UsersPostsComments}
-      />
+      <Switch>
+        <Route
+          path={`${props.match.url}/:postId/comments`}
+          component={UsersPostsComments}
+        />
+      </Switch>
+      <Route path={`${props.match.url}`} exact={true}>
+        <h3>User Posts</h3>
+        <ul>
+          {posts.map((element) => {
+            return (
+              <li id={element.id}>
+                <Link to={`/Users/${userId}/posts/${element.id}/comments`}>
+                  {element.title}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+        <button onClick={() => props.history.goBack()}>Back</button>
+      </Route>
     </div>
   );
 }

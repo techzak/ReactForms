@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouteMatch } from "react-router-dom";
 
-function UsersPostsComments() {
+function UsersPostsComments(props) {
   const [comments, setcomments] = useState([]);
 
   const {
@@ -32,6 +32,7 @@ function UsersPostsComments() {
           return <li id={element.id}>{element.body}</li>;
         })}
       </ul>
+      <button onClick={() => props.history.goBack()}>Back</button>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { Route, withRouter, Link } from "react-router-dom";
+import { Route, withRouter, Switch } from "react-router-dom";
 import UsersPosts from "./UserPosts";
+import ReactTile from "./Components/ReactTile";
 
 class Users extends React.Component {
   constructor(props) {
@@ -26,30 +27,40 @@ class Users extends React.Component {
         console.log(error);
       });
   }
-  // handleOnClick = (event) => {
-  //   console.log(event.target.id);
-  //   console.log(this.props);
-  //   this.props.history.push(`/Users/${event.target.id}/posts`);
-  // };
+  handleOnClick = (event) => {
+    this.props.history.push(`/Users/${event.target.id}/posts`);
+  };
   render() {
     console.log(this.props);
     const { users } = this.state;
     return (
       <div>
-        <h3>Users</h3>
-        <ul>
-          {users.map((element) => {
-            return (
-              <li id={element.id} value={element.name}>
-                <Link to={`/Users/${element.id}/posts`}>{element.name}</Link>
-              </li>
-            );
-          })}
-        </ul>
-        <Route
-          path={`${this.props.match.url}/:userId/posts`}
-          component={UsersPosts}
-        />
+        <Switch>
+          <Route
+            path={`${this.props.match.url}/:userId/posts`}
+            component={UsersPosts}
+          />
+        </Switch>
+        <Route path={`${this.props.match.url}`} exact={true}>
+          <h3>Users</h3>
+          <div className="user-container">
+            <ul className="user-container">
+              {users.map((element) => {
+                return (
+                  <li id={element.id} value={element.name} className="users">
+                    {/* <Link to={`/Users/${element.id}/posts`}>{element.name}</Link> */}
+                    <ReactTile
+                      name={element.name}
+                      email={element.email}
+                      id={element.id}
+                      onClick={this.handleOnClick}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </Route>
       </div>
     );
   }
