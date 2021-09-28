@@ -107,7 +107,7 @@ div#__next > div {
   flex-direction: row;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
@@ -116,7 +116,7 @@ div#__next > div {
   align-content: stretch;
   -webkit-align-items: stretch;
   -ms-flex-align: stretch;
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 .users:nth-child() {
