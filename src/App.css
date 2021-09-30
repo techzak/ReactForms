@@ -98,35 +98,25 @@ div#__next > div {
   height: 100%;
 }
 
-.user-container {
-  display: -ms-flexbox;
-  display: -webkit-flex;
+.users {
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
+}
+
+.user-list {
   flex-wrap: wrap;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-content: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-align-items: stretch;
-  -ms-flex-align: stretch;
+  display: flex;
+}
+.user-list > li {
+  width: 300px;
+  margin-bottom: 30px;
+  list-style-type: none;
+}
+
+.btngroup {
+  display: flex;
   align-items: flex-start;
 }
 
-.users:nth-child() {
-  -webkit-order: 0;
-  -ms-flex-order: 0;
-  order: 0;
-  -webkit-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
-  align-self: auto;
+.btnClass {
+  margin-right: 12px;
 }

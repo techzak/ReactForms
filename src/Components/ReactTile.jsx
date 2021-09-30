@@ -11,9 +11,18 @@ function ReactTile(props) {
       />
       <h3>{props.name}</h3>
       <p>{props.email}</p>
-      <button onClick={props.onClick} id={props.id}>
-        More
-      </button>
+      <div className="btngroup">
+        <button onClick={props.onClick} id={props.id} className="btnClass">
+          More
+        </button>
+        <button
+          onClick={props.handleDetails}
+          id={props.id}
+          className="btnClass"
+        >
+          Details
+        </button>
+      </div>
     </div>
   );
 }
