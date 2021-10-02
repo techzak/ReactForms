@@ -9,8 +9,8 @@ function ReactTile(props) {
         width="100"
         height="100"
       />
-      <h3>{props.name}</h3>
-      <p>{props.email}</p>
+      <h3 style={{ marginBottom: "2px" }}>{props.name}</h3>
+      <p style={{ marginTop: "2px" }}>{props.email}</p>
       <div className="btngroup">
         <button onClick={props.onClick} id={props.id} className="btnClass">
           More

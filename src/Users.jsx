@@ -6,6 +6,8 @@ import ReactTile from "./Components/ReactTile";
 import UserDetails from "./UserDetails";
 import EditUser from "./EditUser";
 import NewUser from "./NewUser";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThLarge, faList } from "@fortawesome/free-solid-svg-icons";
 
 class Users extends React.Component {
   constructor(props) {
@@ -14,6 +16,7 @@ class Users extends React.Component {
       users: [],
       posts: [],
       comments: [],
+      view: "grid",
     };
   }
 
@@ -49,7 +52,7 @@ class Users extends React.Component {
 
   render() {
     console.log(this.props);
-    const { users } = this.state;
+    const { users, view } = this.state;
     return (
       <div>
         <Switch>
@@ -68,25 +71,79 @@ class Users extends React.Component {
           <Route path={`${this.props.match.url}/NewUser`} component={NewUser} />
         </Switch>
         <Route path={`${this.props.match.url}`} exact={true}>
-          <h3>Users</h3>
-          <div className="users">
-            <ul className="user-list">
-              {users.map((element) => {
-                return (
-                  <li id={element.id} value={element.name}>
-                    {/* <Link to={`/Users/${element.id}/posts`}>{element.name}</Link> */}
-                    <ReactTile
-                      name={element.name}
-                      email={element.email}
-                      id={element.id}
-                      onClick={this.handleOnClick}
-                      handleDetails={this.handleOnDetails}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <h3 style={{ marginRight: "12px" }}>Users</h3>
+            <button
+              onClick={() => this.setState({ view: "grid" })}
+              style={{ height: "30px" }}
+            >
+              <FontAwesomeIcon icon={faThLarge} />
+            </button>
+            <button
+              onClick={() => this.setState({ view: "table" })}
+              style={{ height: "30px" }}
+            >
+              <FontAwesomeIcon icon={faList} />
+            </button>
           </div>
+          {view === "grid" && (
+            <div className="users">
+              <ul className="user-list">
+                {users.map((element) => {
+                  return (
+                    <li id={element.id} value={element.name}>
+                      {/* <Link to={`/Users/${element.id}/posts`}>{element.name}</Link> */}
+                      <ReactTile
+                        name={element.name}
+                        email={element.email}
+                        id={element.id}
+                        onClick={this.handleOnClick}
+                        handleDetails={this.handleOnDetails}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+          {view === "table" && (
+            <div>
+              <table>
+                <tr>
+                  <th style={{ textAlign: "left" }}>Name</th>
+                  <th style={{ textAlign: "left" }}>Email</th>
+                  <th style={{ textAlign: "left" }}>More</th>
+                  <th style={{ textAlign: "left" }}>Details</th>
+                </tr>
+                {users.map((element) => {
+                  return (
+                    <tr id={element.id} key={element.id} value={element.name}>
+                      {/* <Link to={`/Users/${element.id}/posts`}>{element.name}</Link> */}
+
+                      <td>{element.name}</td>
+                      <td>{element.email}</td>
+                      <td>
+                        <button onClick={this.handleOnClick} id={element.id}>
+                          More
+                        </button>
+                      </td>
+                      <td>
+                        <button onClick={this.handleOnDetails} id={element.id}>
+                          Details
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </table>
+            </div>
+          )}
           <button onClick={this.handleNewUser}>Create User</button>
         </Route>
       </div>

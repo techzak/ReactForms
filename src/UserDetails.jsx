@@ -1,4 +1,7 @@
 import React from "react";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 
 function UserDetails(props) {
   console.log(props);
@@ -6,6 +9,19 @@ function UserDetails(props) {
 
   const handleOnEdit = (event) => {
     props.history.push(`/Users/${userInfo.id}/edit`, { userInfo });
+  };
+
+  const handleOnDelete = () => {
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/users/${userInfo.id}`)
+      .then((response) => {
+        console.log(response.data);
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
   };
   return (
     <div>
@@ -22,7 +38,14 @@ function UserDetails(props) {
       <h5>Company Name: {userInfo.company.name}</h5>
       <h5>Company Catch Phrase: {userInfo.company.catchPhrase}</h5>
       <h5>Company BS: {userInfo.company.bs}</h5>
-      <button onClick={handleOnEdit}>Edit</button>
+      <button onClick={handleOnEdit} style={{ marginRight: "12px" }}>
+        <FontAwesomeIcon icon={faUserEdit} />
+        <span style={{ marginLeft: "6px" }}>Edit</span>
+      </button>
+      <button onClick={handleOnDelete}>
+        <FontAwesomeIcon icon={faTrashAlt} />
+        <span style={{ marginLeft: "6px" }}>Delete User</span>
+      </button>
     </div>
   );
 }
