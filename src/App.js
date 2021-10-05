@@ -7,6 +7,11 @@ import Success from "./Success";
 import ReviewAndSubmit from "./ReviewAndSubmit";
 import Counter from "./Components/counter";
 import Users from "./Users";
+import Drawer from "@mui/material/Drawer";
+import Toolbar from "@mui/material/Toolbar";
+import Divider from "@mui/material/Divider";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
 function App() {
   return (
@@ -14,33 +19,53 @@ function App() {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="flex-container">
           <div className="flex-item">
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/MusicRegistrationForm">Music Registration Form</Link>
-              </li>
-              <li>
-                <Link to="/SchoolRegistrationForm">
-                  School Registration Form
-                </Link>
-              </li>
-              <li>
-                <Link to="/LandscapingOnlineEnquiry">
-                  Landscaping Online Enquiry
-                </Link>
-              </li>
-              <li>
-                <Link to="/BookingEnquiryForm">Booking Enquiry Form</Link>
-              </li>
-              <li>
-                <Link to="/Counter">Counter</Link>
-              </li>
-              <li>
-                <Link to="/Users">Users</Link>
-              </li>
-            </ul>
+            <Drawer
+              sx={{
+                width: 250,
+                flexShrink: 0,
+                "& .MuiDrawer-paper": {
+                  width: 250,
+                  boxSizing: "border-box",
+                },
+              }}
+              variant="permanent"
+              anchor="left"
+            >
+              <Toolbar>
+                <h2>React Learning</h2>
+              </Toolbar>
+              <Divider />
+              <List>
+                <ListItem>
+                  <Link to="/">Home</Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/MusicRegistrationForm">
+                    Music Registration Form
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/SchoolRegistrationForm">
+                    School Registration Form
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/LandscapingOnlineEnquiry">
+                    Landscaping Online Enquiry
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/BookingEnquiryForm">Booking Enquiry Form</Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/Counter">Counter</Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/Users">Users</Link>
+                </ListItem>
+              </List>
+              <Divider />
+            </Drawer>
           </div>
           <div className="flex-item">
             <Switch>

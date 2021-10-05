@@ -6,8 +6,12 @@ import ReactTile from "./Components/ReactTile";
 import UserDetails from "./UserDetails";
 import EditUser from "./EditUser";
 import NewUser from "./NewUser";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThLarge, faList } from "@fortawesome/free-solid-svg-icons";
+import IconButton from "@mui/material/IconButton";
+import GridViewIcon from "@mui/icons-material/GridView";
+import ListIcon from "@mui/icons-material/List";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import { grey } from "@mui/material/colors";
 
 class Users extends React.Component {
   constructor(props) {
@@ -78,19 +82,27 @@ class Users extends React.Component {
               alignItems: "center",
             }}
           >
-            <h3 style={{ marginRight: "12px" }}>Users</h3>
-            <button
-              onClick={() => this.setState({ view: "grid" })}
-              style={{ height: "30px" }}
-            >
-              <FontAwesomeIcon icon={faThLarge} />
-            </button>
-            <button
-              onClick={() => this.setState({ view: "table" })}
-              style={{ height: "30px" }}
-            >
-              <FontAwesomeIcon icon={faList} />
-            </button>
+            <AppBar position="sticky">
+              <Toolbar>
+                <h3 style={{ marginRight: "12px" }}>Users</h3>
+                <IconButton
+                  aria-label="Grid"
+                  sx={{ color: grey[50] }}
+                  onClick={() => this.setState({ view: "grid" })}
+                  style={{ height: "30px" }}
+                >
+                  <GridViewIcon />
+                </IconButton>
+                <IconButton
+                  aria-label="Grid"
+                  sx={{ color: grey[50] }}
+                  onClick={() => this.setState({ view: "table" })}
+                  style={{ height: "30px" }}
+                >
+                  <ListIcon />
+                </IconButton>
+              </Toolbar>
+            </AppBar>
           </div>
           {view === "grid" && (
             <div className="users">

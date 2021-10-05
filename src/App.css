@@ -68,9 +68,6 @@
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
-  background-color: lightseagreen;
-  margin-right: 20px;
-  min-width: 300px;
 }
 
 .flex-item:nth-child(2) {
@@ -110,6 +107,7 @@ div#__next > div {
   width: 300px;
   margin-bottom: 30px;
   list-style-type: none;
+  margin-right: 18px;
 }
 
 .btngroup {
