@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import { useRouteMatch, Route, Link, Switch } from "react-router-dom";
 import UsersPostsComments from "./UserPostsComments";
+import { fetchPostByUserId } from "./Redux/actions/userActionCreator";
+import { useDispatch, useSelector } from "react-redux";
 
 function UsersPosts(props) {
-  const [posts, setposts] = useState([]);
+  const dispatchAPI = useDispatch();
+  const posts = useSelector((state) => state.userPosts.post);
+  // const [posts, setposts] = useState([]);
   const {
     params: { userId },
   } = useRouteMatch();
@@ -12,18 +15,20 @@ function UsersPosts(props) {
   // const history = useHistory();
 
   useEffect(() => {
-    axios
-      .get(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
-      .then((response) => {
-        // handle success
-        console.log(response.data);
-        setposts(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
+    dispatchAPI(fetchPostByUserId(userId));
+    // axios
+    //   .get(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+    //   .then((response) => {
+    //     // handle success
+    //     console.log(response.data);
+    //     setposts(response.data);
+    //   })
+    //   .catch(function (error) {
+    //     // handle error
+    //     console.log(error);
+    //   });
   }, [userId]);
+
   // const handleOnClick = (event) => {
   //   console.log(event.target.id);
   //   history.push(`/Users/${userId}/posts/${event.target.id}/comments`);

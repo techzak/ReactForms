@@ -12,6 +12,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import ReduxCounter from "./Containers/ReduxCounterContainer";
+import UsersContainer from "./Containers/UsersContainer";
 
 function App() {
   return (
@@ -63,6 +65,12 @@ function App() {
                 <ListItem>
                   <Link to="/Users">Users</Link>
                 </ListItem>
+                <ListItem>
+                  <Link to="/ReduxCounter">ReduxCounter</Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/UsersContainer">Users Container</Link>
+                </ListItem>
               </List>
               <Divider />
             </Drawer>
@@ -73,6 +81,7 @@ function App() {
                 path="/MusicRegistrationForm"
                 component={MusicRegistrationForm}
               />
+              <Route path="/ReduxCounter" component={ReduxCounter} />
               <Route
                 path="/SchoolRegistrationForm"
                 component={SchoolRegistrationForm}
@@ -89,6 +98,7 @@ function App() {
               <Route path="/Success" component={Success} />
               <Route path="/ReviewAndSubmit" component={ReviewAndSubmit} />
               <Route path="/Users" component={Users} />
+              <Route path="/UsersContainer" component={UsersContainer} />
             </Switch>
           </div>
         </div>
